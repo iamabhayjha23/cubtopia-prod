@@ -1,0 +1,54 @@
+body {
+  background: #f6fafd;
+  margin: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.milo-hero {
+  margin: 2.5rem auto 0 auto;
+  max-width: 1350px;
+  display: flex;
+  align-items: center;
+  min-height: 450px;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  /* The background is set via inline style in the JSX */
+  box-shadow: 0 6px 40px #4ebade44;
+  padding: 3.5rem 2rem 2rem 3.3rem;
+}
+.hero-left {
+  z-index: 2;
+  flex: 2;
+  min-width: 330px;
+  color: #fff;
+  position: relative;
+}
+.milo-hero h1 {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 2.7rem;
+  font-weight: 800;
+  line-height: 1.13;
+  margin: 0 0 0.6em 0;
+  text-shadow: 2px 4px 0 #226b9f30, 2.5px 4.5px 0 #fff8;
+}
+.milo-hero h1 span { color: #fffc7b; background: #fff52b25; padding: 0.1em 0.3em; border-radius: 5px; }
+.hero-img-wrap {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-img-wrap img {
+  width: 330px;
+  max-width: 100vw;
+  object-fit: cover;
+  border-radius: 30px;
+  box-shadow: 0 8px 35px #fff6, 0 1px 8px #3b84b655;
+}
+@media (max-width: 900px) {
+  .milo-hero { flex-direction: column; padding: 2.2rem 0.5rem; }
+  .hero-left { text-align: center; margin-bottom: 1.2rem; }
+}
+@media (max-width: 600px) {
+  .milo-hero { padding: 1rem 0.2rem; min-height: 280px; }
+  .hero-img-wrap img { width: 94vw; border-radius: 20px; }
+}
