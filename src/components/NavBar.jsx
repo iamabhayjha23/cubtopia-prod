@@ -28,7 +28,7 @@ const NavLogo = styled(Link)`
   align-items: center;
   
   img {
-    height: 50px;
+    height: 80px;
     width: auto;
   }
 `;
