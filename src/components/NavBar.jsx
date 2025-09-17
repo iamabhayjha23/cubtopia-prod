@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import logoImage from '../assets/logo.jpg';
 
-// ... (All of your styled-components like Nav, NavItem, DropdownMenu, etc. remain exactly the same)
+// Update the Nav component with the decorative border
 const Nav = styled.nav`
   background: #fff;
   display: flex;
@@ -13,7 +13,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   box-shadow: 0 1px 18px #75bedbc3;
   padding: 0.5rem 2.1rem;
-  border-radius: 0 0 28px 28px;
+  /* Removed border-radius to allow the border to span the full width */
   position: fixed;
   top: 0;
   left: 0;
@@ -21,15 +21,29 @@ const Nav = styled.nav`
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
   transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0)' : 'translateY(-100%)')};
+
+  /* NEW: Add the decorative top border */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Position it just below the navbar */
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: url(/img/bg-header-top.png) center center repeat-x;
+    z-index: 1;
+  }
 `;
+
+// ... The rest of your styled-components (NavLogo, NavLinks, etc.) are unchanged
 
 const NavLogo = styled(Link)`
   display: flex;
   align-items: center;
   
   img {
-    height: 70px;
-    width: 200px;
+    height: 50px;
+    width: auto;
   }
 `;
 
@@ -109,6 +123,7 @@ const NavItem = styled.div`
   }
 `;
 
+
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
@@ -129,15 +144,13 @@ export default function NavBar() {
 
   return (
     <Nav $isVisible={isVisible}>
+      {/* ... The rest of your JSX is unchanged ... */}
       <NavLogo to="/">
         <img src={logoImage} alt="Cubtopia Preschool Logo" />
       </NavLogo>
-      
       <NavLinks>
         <NavItem><Link to="/">Home</Link></NavItem>
         <NavItem><Link to="/about">About Us</Link></NavItem>
-        
-        {/* NEW: Added the "Why Cubtopia" dropdown */}
         <NavItem>
           <Link to="/why-cubtopia">Why Cubtopia</Link>
           <DropdownMenu>
@@ -145,7 +158,6 @@ export default function NavBar() {
             <Link to="/learning-methods">Learning Methods</Link>
           </DropdownMenu>
         </NavItem>
-
         <NavItem>
           <Link to="/programs">Programs</Link>
           <DropdownMenu>
@@ -154,10 +166,8 @@ export default function NavBar() {
             <Link to="/programs/daycare">Daycare Program</Link>
           </DropdownMenu>
         </NavItem>
-        
-        <NavItem><Link to="/contact">Gallery</Link></NavItem>
+        <NavItem><Link to="/contact">Contact Us</Link></NavItem>
       </NavLinks>
-
       <NavSocial>
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
