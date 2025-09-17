@@ -28,8 +28,8 @@ const NavLogo = styled(Link)`
   align-items: center;
   
   img {
-    height: 80px;
-    width: auto;
+    height: 70px;
+    width: 200px;
   }
 `;
 
@@ -155,7 +155,7 @@ export default function NavBar() {
           </DropdownMenu>
         </NavItem>
         
-        <NavItem><Link to="/contact">Contact Us</Link></NavItem>
+        <NavItem><Link to="/contact">Gallery</Link></NavItem>
       </NavLinks>
 
       <NavSocial>

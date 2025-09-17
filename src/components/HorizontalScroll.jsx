@@ -5,12 +5,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const SectionWrapper = styled.section`
   position: relative;
-  background: #023047; /* Dark blue background to make it stand out */
+  background: #023047;
 `;
 
 const TallContainer = styled.div`
   height: 300vh;
-  position: relative;
 `;
 
 const StickyContainer = styled.div`
@@ -27,6 +26,7 @@ const ScrollTrack = styled(motion.div)`
   align-items: center;
 `;
 
+// ADDED BACK: The missing 'Card' styled-component
 const Card = styled.div`
   width: 100vw;
   height: 100vh;
@@ -51,6 +51,7 @@ const Card = styled.div`
   }
 `;
 
+// ADDED BACK: The missing 'Circle' styled-component
 const Circle = styled.div`
   position: absolute;
   border-radius: 50%;
@@ -59,7 +60,6 @@ const Circle = styled.div`
   z-index: 0;
 `;
 
-// CORRECTED: Make sure "export default" is at the beginning of the function
 export default function HorizontalScroll() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -68,7 +68,7 @@ export default function HorizontalScroll() {
   });
 
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.6%"]);
-
+  
   const programs = [
     {
       title: "Integrated Program",
@@ -86,20 +86,22 @@ export default function HorizontalScroll() {
 
   return (
     <SectionWrapper>
-      <TallContainer ref={targetRef}>
-        <StickyContainer>
-          <Circle style={{ width: '400px', height: '400px', top: '10%', left: '5%' }}/>
-          <Circle style={{ width: '200px', height: '200px', top: '60%', left: '70%' }}/>
-          <ScrollTrack style={{ x }}>
-            {programs.map((program, index) => (
-              <Card key={index}>
-                <h2>{program.title}</h2>
-                <p>{program.description}</p>
-              </Card>
-            ))}
-          </ScrollTrack>
-        </StickyContainer>
-      </TallContainer>
+      <motion.div ref={targetRef} style={{ position: 'relative' }}>
+        <TallContainer>
+          <StickyContainer>
+            <Circle style={{ width: '400px', height: '400px', top: '10%', left: '5%' }}/>
+            <Circle style={{ width: '200px', height: '200px', top: '60%', left: '70%' }}/>
+            <ScrollTrack style={{ x }}>
+              {programs.map((program, index) => (
+                <Card key={index}>
+                  <h2>{program.title}</h2>
+                  <p>{program.description}</p>
+                </Card>
+              ))}
+            </ScrollTrack>
+          </StickyContainer>
+        </TallContainer>
+      </motion.div>
     </SectionWrapper>
   );
 }

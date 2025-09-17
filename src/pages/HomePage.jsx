@@ -1,5 +1,6 @@
 // src/pages/HomePage.jsx
 import Hero from "../components/Hero";
+import HeroCarousel from "../components/HeroCarousel";
 import FoundationSection from "../components/FoundationSection";
 import OurBeliefs from "../components/OurBeliefs";
 import Features from "../components/Features";
@@ -8,16 +9,19 @@ import AnimatedSection from "../components/AnimatedSection";
 import FloatingButton from "../components/FloatingButton";
 import EnquiryModal from '../components/EnquiryModal';
 import HorizontalScroll from "../components/HorizontalScroll";
-import ConnectingLine from "../components/ConnectingLine";
+
+import Facilities from "../components/Facilities";
 
 // Note: We pass openModal as a prop from App.jsx now
 export default function HomePage({ openModal }) {
   return (
     <>
-      <Hero />
+      <HeroCarousel />
+      
+      <Facilities></Facilities>
       <FoundationSection></FoundationSection>
       <OurBeliefs />
-      <ConnectingLine></ConnectingLine>
+      
       <AnimatedSection>
         <Features />
         <HorizontalScroll></HorizontalScroll>
